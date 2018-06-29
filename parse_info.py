@@ -35,8 +35,6 @@ all_data.sort(reverse = True, key = lv_cmp)
 rank = 1
 with open("final_results.txt", "w") as output:
 	for ppl in all_data:
-		if all_data.index(ppl) is (len(all_data) - 1):
-			break
 		output.write(str(rank) + " ")
 		if ppl[2]:
 			output.write(ppl[0] + " " + str('{:5.2f}'.format(ppl[1])) + " (" + ppl[2] + ")\n")
