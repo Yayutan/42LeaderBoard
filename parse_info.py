@@ -6,7 +6,7 @@ import csv
 with open("info") as f:
 	inter = f.read()
 
-inter += "{}]"
+inter = "[" + inter + "{}]"
 full_info = json.loads(inter)
 ## container for all data
 all_data = []
