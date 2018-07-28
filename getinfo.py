@@ -3,11 +3,11 @@ import json
 import csv
 import urllib
 
-r = requests.post("https://api.intra.42.fr/oauth/token", data={'grant_type': 'client_credentials', 'client_id': "SOMEGUY'S_UID", 'client_secret': "SOMEGUY'S_SECRET"})
+r = requests.post("https://api.intra.42.fr/oauth/token", data={'grant_type': 'client_credentials', 'client_id': "46694a0ace8f3f7d18852ecae27fdadf94af9e00a771cb871a89ee8e1bf2b10e", 'client_secret': "75328dd86cd2b0453e93e56456ad36fb682626eadba8e9a1663c27a9b0cf208f"})
 access_token = json.loads(r.text)['access_token']
 print(access_token)
 
-f1 = open('urls.csv', 'r')#----------->CHANGE name of the url file
+f1 = open('maypiscinelogins.txt', 'r')#----------->CHANGE name of the url file
 filesize = len(f1.readlines())
 f1.close()
 print("file size: " + str(filesize))
@@ -20,22 +20,24 @@ if str(temp) == "DONE":
 else:
 	startingcount = int(temp)
 	infolist = []
-	with open('urls.csv', 'r') as csvfile: #----------->CHANGE name of the url file
-		rd = csv.reader(csvfile)
+	with open('maypiscinelogins.txt', 'r') as csvfile: #----------->CHANGE name of the url file
+		#rd = csv.reader(csvfile)
+		rd = csvfile.read().split('\n')
 		curcount = 0
 		reqcount = 0
 		get = 0
 		skip = 0
 		for row in rd:
-			if reqcount == 700: #------------------->request limit set to 10 for testing
+			if reqcount == 1000: #------------------->request limit set to 10 for testing
 				stc = open('startingcount.txt','w')
 				print("hit request limit: " + str(reqcount))
 				stc.write(str(curcount))
 				stc.close()
 				break
 			curcount += 1
-			if curcount > startingcount: #------------------------->skip the ones already done
-				url = str(row[0]) + ('?access_token=%s' % (access_token))
+			if curcount > startingcount and len(row): #------------------------->skip the ones already done
+				url = "https://api.intra.42.fr/v2/users/" + str(row) + ('?access_token=%s' % (access_token))
+				print(url)
 				f = requests.get(url)
 				data = f.text #----------->data, double quotes
 				res = json.loads(data) #-->res, single quotes
