@@ -7,7 +7,7 @@
 &nbsp;&nbsp; 1. Written by xzhu and mchuang  
 &nbsp;&nbsp; 2. Ranking is taken by the level each individual earned  
 &nbsp;&nbsp; 3. Ranking formatted as <rank> <intra_login> <level> <time_participated>  
-&nbsp;&nbsp; 4. Data up to 2018-06-28 4:30 AM (PDT)  
+&nbsp;&nbsp; 4. Data up to 2018-07-31 10:00 AM (PST)  
 +---------------------------------------------------------------------------+  
 
 +----------------------------------------------------------------------------------------------------------+  
